@@ -1,0 +1,22 @@
+kind: pipeline
+type: exec
+name: qm-test
+steps:
+- name: inst
+  environment:
+    HOME: /home/build_bot
+  commands:
+  - yarn config set @ff:registry https://npm.gnivc.ru/
+  - yarn config set @sandbox:registry https://npm.gnivc.ru/
+  - yarn add -D react-scripts
+  - yarn install
+      
+- name: qm
+  commands:
+  - qm run-tests --type unit --ci
+  - qm run-tests --type e2e --ci
+  
+trigger:
+  event:
+    exclude:
+      - pull_request
