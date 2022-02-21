@@ -1,36 +1,19 @@
-import _ = require("lodash");
+import axios from "axios";
+const _ = require('lodash');
 
-import {DataByYear, District, FederalDistricts, Regions, Report} from './type'
+import { Categories } from "./type";
 
-const geo: District[] = require('./geo.json');
-const incomings: DataByYear[] = require('./incomnigs.json');
+const data: Categories[] = [];
 
-const federalDistricts: FederalDistricts = {};
-_.map(geo,(item) => {
-    federalDistricts[item.code] = item.caption
+axios('http://jsonplaceholder.typicode.com/posts').then((res) =>{
+    _.map(res.data, (item) => {
+        data.push(item)
+    });
+    const sortData: Categories[] = _.sortBy(data, [(item) => item.title])
+
+    console.log(sortData)
+    return sortData
 });
-
-const regions: Regions = {};
-_.map(geo, (item) => {
-    _.map(item.regions, (reg) => {
-        regions[reg.code] = reg.caption
-    })
-});
-
-const report2020: Report = {};
-_.map(incomings, (year) => {
-    _.map(year.regions, (reg) => {
-        const nameOfRegion = regions[reg.code]
-        report2020[nameOfRegion] = reg.value
-    })
-});
-
-
-console.log(federalDistricts);
-console.log(regions);
-console.log(report2020);
-
-
 
 
 
