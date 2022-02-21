@@ -10,28 +10,45 @@ export type District = {
     regions: Region[];
 };
 
-type IncomnigsCountry = {
+type Cashflows = {
     caption: string;
     value: number;
 };
 
-type IncomnigsDistrict = {
+type IncomnigsDistricts = {
     code: string;
     caption: string;
     value: number;
-    subitems: IncomnigsCountry[];
+    subitems: Cashflows[];
 };
 
-type IncomnigsRegion = {
-    regions: IncomnigsDistrict
+type IncomingsCountry = {
+    caption: string;
+    value: number;
 };
 
-type IncomnigsReport = {
-    country: IncomnigsCountry;
-    districts: IncomnigsDistrict[];
-    regions: IncomnigsRegion[];
+type IncomingsRegions = {
+    code: string;
+    caption: string;
+    value: number;
+    subitems: Cashflows[];
 };
 
-export type Incomnigs = {
-    [year: string]: IncomnigsReport;
+export type DataByYear = {
+    country: IncomingsCountry;
+    districts: IncomnigsDistricts[];
+    regions: IncomingsRegions[];
 };
+
+export type FederalDistricts = {
+    [code: number]: string;
+};
+
+export type Regions = {
+    [code: number]: string;
+};
+
+export type Report = {
+    [caption: string]: number;
+};
+
