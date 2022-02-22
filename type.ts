@@ -1,5 +1,5 @@
 
-export type Categories = {
+export type Category = {
     userId: number
     id: number
     title: string
