@@ -1,9 +1,14 @@
 
+type Characters = Array<string>
+
 export type Category = {
-    userId: number
-    id: number
-    title: string
-    body: string
+    episode_id: number,
+    title: string,
+    season: string,
+    air_date: string,
+    characters: Characters,
+    episode: string,
+    series: string,
 }
 
 

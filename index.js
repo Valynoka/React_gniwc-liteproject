@@ -3,7 +3,7 @@ exports.__esModule = true;
 var axios_1 = require("axios");
 var _ = require('lodash');
 var data = [];
-(0, axios_1["default"])('http://jsonplaceholder.typicode.com/posts').then(function (res) {
+(0, axios_1["default"])('https://www.breakingbadapi.com/api/episodes').then(function (res) {
     _.map(res.data, function (item) {
         data.push(item);
     });
