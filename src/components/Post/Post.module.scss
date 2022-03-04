@@ -1,2 +1,16 @@
-.component {
+.post {
+  border: 2px solid #023156;
+  max-width: 400px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 20px;
+  .post__item {
+    display: flex;
+    align-items: center;
+  }
+  .post__title{
+    margin-right: 16px;
+  }
 }
+

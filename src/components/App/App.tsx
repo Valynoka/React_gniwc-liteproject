@@ -49,7 +49,7 @@ const App: React.FC = () => {
         : (
           <>
             <Search search={search} handleSearch={handleSearch} />
-            <Posts data={visible} search={search} filteredResult="" />
+            <Posts data={visible} search={search} display="" />
           </>
         )}
       {
