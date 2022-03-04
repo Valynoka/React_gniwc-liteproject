@@ -1,6 +1,6 @@
 type Characters = Array<string>;
 
-export type SerialDataType = {
+export type SerialApiDataTypes = {
   episode_id: number,
   title: string,
   season: string,

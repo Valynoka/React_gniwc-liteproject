@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Error: React.FC = () => <div>Загрузка не удалась</div>;
+import styles from './Error.module.scss';
+
+const Error: React.FC = () => (
+  <div className={styles.error}>
+    Упс! Загрузка не удалась.
+  </div>
+);
 
 export default Error;

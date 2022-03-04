@@ -1,17 +1,27 @@
 import React from 'react';
 
-import { SearchTypes } from './SearchTypes';
+import styles from './Search.module.scss';
 
-const Search: React.FC<SearchTypes> = (props) => {
+type SearchProps = {
+  search: string,
+  handleSearch: React.ChangeEventHandler<HTMLInputElement>;
+  placeholder?: string,
+
+};
+
+const Search: React.FC<SearchProps> = (props) => {
   const { search, handleSearch, placeholder = 'Search' } = props;
 
   return (
-    <input
-      type="text"
-      value={search}
-      onChange={handleSearch}
-      placeholder={placeholder}
-    />
+    <div className={styles.search}>
+      <input
+        className={styles.search__input}
+        type="text"
+        value={search}
+        onChange={handleSearch}
+        placeholder={placeholder}
+      />
+    </div>
   );
 };
 
