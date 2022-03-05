@@ -1,18 +1,33 @@
 import React from 'react';
-import { Outlet, Route, Routes } from 'react-router-dom';
+import {
+  Outlet, Route, Routes, BrowserRouter as Router,
+} from 'react-router-dom';
 
 import Header from '../Header';
-import classes from './App.module.scss';
 import StartPage from '../StartPage';
 import InfoPage from '../InfoPage';
 import PageForFun from '../PageForFun';
 
 const App: React.FC = () => {
+  // return (
+  //   <Router>
+  //     <Header/>
+  //     <Routes>
+  //       <Route path="/" element={<StartPage/>}/>
+  //       <Route path="/StartPage" element={<StartPage/>}/>
+  //       <Route path="/InfoPage" element={<InfoPage/>}>
+  //         <Route path="/InfoPage/:view" element={<InfoPage/>}/>
+  //       </Route>
+  //       <Route path="/FunnyPage" element={<PageForFun message={''} image={''}/>}/>
+  //     </Routes>
+  //   </Router>
+  // )
+
   function Layout() {
     return (
       <div className="App">
         <Header />
-        <main className={classes.content}>
+        <main>
           <Outlet />
         </main>
       </div>
@@ -20,15 +35,17 @@ const App: React.FC = () => {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<StartPage />} />
-        <Route path="InfoPage/*" element={<InfoPage />}>
-          <Route path="InfoPage/:view" element={<InfoPage />} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<StartPage />} />
+          <Route path="InfoPage" element={<InfoPage />}>
+            <Route path="InfoPage/:view" element={<InfoPage />} />
+          </Route>
+          <Route path="FunnyPage" element={<PageForFun message="" image="" />} />
         </Route>
-        <Route path="FunnyPage" element={<PageForFun message="" image="" />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </Router>
   );
 };
 

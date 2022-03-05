@@ -9,7 +9,7 @@ const Header: React.FC = () => (
       <Link className={classes.header__link} to="/">
         <button type="button" className={classes.header__button}>Главная</button>
       </Link>
-      <Link className={classes.header__link} to="InfoPage">
+      <Link className={classes.header__link} to="/InfoPage">
         <button type="button" className={classes.header__button}>О сериале</button>
       </Link>
     </nav>
