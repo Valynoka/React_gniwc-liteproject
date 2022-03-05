@@ -52,8 +52,8 @@ const Posts: React.FC<PostsProps> = (props) => {
       </div>
     );
   }
-  if (view === 'graph') {
-    return <div>To be develop!</div>;
+  if (data) {
+    return <p>Ничего не найдено</p>;
   }
   return null;
 };

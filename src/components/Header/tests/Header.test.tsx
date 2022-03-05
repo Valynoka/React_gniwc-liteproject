@@ -8,11 +8,13 @@ const testId = 'testingHeader';
 
 type HeaderProps = React.ComponentProps<typeof Header>;
 
-const renderComponent = (props: HeaderProps = {}) => render(
-  <Header
-    data-testid={testId}
-    {...props}
-  />,
+const renderComponent = (props: HeaderProps) => render(
+  <Router>
+    <Header
+      data-testid={testId}
+      {...props}
+    />,
+  </Router>,
 );
 
 describe('Компонент Header', () => {
@@ -26,5 +28,6 @@ describe('Компонент Header', () => {
       </Router>,
     );
     expect(getByText('Главная')).toBeInTheDocument();
+    expect(getByText('О сериале')).toBeInTheDocument();
   });
 });
