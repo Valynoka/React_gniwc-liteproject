@@ -27,16 +27,19 @@ const PageForFun: React.FC<PageForFunProps> = () => {
       });
   }, []);
 
-  if (error) {
-    return <Error />;
-  }
-
   // не знал, как сделать так, чтобы по клику на кнопку менялась картинка, пришлось сделать так
   const getPost = () => {
     axios.get(apiUrl).then((response) => {
       getImage(response.data.message);
-    });
+    })
+      .catch(() => {
+        setError(true);
+      });
   };
+
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <div>

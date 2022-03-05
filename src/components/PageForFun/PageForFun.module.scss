@@ -13,7 +13,14 @@
   }
 
   &__img{
-    max-width: 550px;
+    max-width: 680px;
+
+    @media screen and (max-width: 768px){
+      width: 500px;
+    }
+    @media screen and (max-width: 480px){
+      width: 250px;
+    }
   }
 
   &__button{
