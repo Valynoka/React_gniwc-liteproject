@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Post from '../Post';
+import Post from '../PostList';
 
 const testId = 'testingPost';
 
@@ -15,7 +15,7 @@ const renderComponent = (props: PostProps) => render(
   />,
 );
 
-describe('Компонент Post', () => {
+describe('Компонент PostList', () => {
   it('отображается без ошибок', () => {
     expect(renderComponent).not.toThrow();
   });

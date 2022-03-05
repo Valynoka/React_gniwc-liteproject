@@ -1,61 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
-import { SerialApiDataTypes } from '../../models/SerialApiDataTypes';
-import Posts from '../Posts';
-import Error from '../Error';
-import Loading from '../Loading';
-import Search from '../Search';
+import Header from '../Header';
+import classes from './App.module.scss';
+import StartPage from '../StartPage';
+import InfoPage from '../InfoPage';
+import PageForFun from '../PageForFun';
 
 const App: React.FC = () => {
-  // Хук для загрузки данных с апи
-  const [post, setPost] = useState<Array<SerialApiDataTypes>>([]);
-  // Хук для вывода ошибки. Может быть или true || false
-  const [error, setError] = useState(false);
-  // Хук для вывода ошибки
-  const [loading, setLoading] = useState(false);
-  // Хук для поиска
-  const [search, setSearch] = useState('');
-
-  // Загружаем данные useEffect позволяет устранить перезагрузку
-  const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (event) => setSearch(event.target.value);
-  // Хук для кнопки, которая будет выводить нам доп. данные. Станет невидимой, когда
-  // будет виден весь массив.
-  const [visible, setVisible] = useState<SerialApiDataTypes[]>(post.slice(0, 3));
-  // Функция, выводящая по 3 слова. Ее вешаем на кнопку
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => setVisible(post.slice(0, visible.length + 3));
-
-  useEffect(() => {
-    axios.get('https://www.breakingbadapi.com/api/episodes')
-      .then((response) => {
-        setPost(response.data);
-        setVisible(response.data.slice(0, 3));
-        setError(false);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-        setError(true);
-      });
-  }, []);
-  if (error) {
-    return <Error />;
+  function Layout() {
+    return (
+      <div className="App">
+        <Header />
+        <main className={classes.content}>
+          <Outlet />
+        </main>
+      </div>
+    );
   }
 
   return (
-    <div>
-      {loading
-        ? <Loading />
-        : (
-          <>
-            <Search search={search} handleSearch={handleSearch} />
-            <Posts data={visible} search={search} display="" />
-          </>
-        )}
-      {
-        visible && (visible.length < post.length && <button type="button" onClick={handleClick}>Показать еще</button>)
-      }
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<StartPage />} />
+        <Route path="InfoPage/*" element={<InfoPage />}>
+          <Route path="InfoPage/:view" element={<InfoPage />} />
+        </Route>
+        <Route path="FunnyPage" element={<PageForFun message="" image="" />} />
+      </Route>
+    </Routes>
   );
 };
 

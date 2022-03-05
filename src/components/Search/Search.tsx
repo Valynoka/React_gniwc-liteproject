@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Search.module.scss';
+import classes from './Search.module.scss';
 
 type SearchProps = {
   search: string,
@@ -13,9 +13,9 @@ const Search: React.FC<SearchProps> = (props) => {
   const { search, handleSearch, placeholder = 'Search' } = props;
 
   return (
-    <div className={styles.search}>
+    <div className={classes.search}>
       <input
-        className={styles.search__input}
+        className={classes.search__input}
         type="text"
         value={search}
         onChange={handleSearch}

@@ -1,2 +1,26 @@
-.component {
+.search {
+  padding: 14px;
+  border: none;
+  border-radius: 16px;
+  outline: none;
+  margin-bottom: 24px;
+  background-color: #023156;
+  &__input {
+    padding: 8px;
+    width: 400px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+
+    @media screen and (max-width: 768px){
+      width: 320px;
+    }
+    @media screen and (max-width: 480px){
+      width: 220px;
+    }
+
+  }
+
+
 }
+

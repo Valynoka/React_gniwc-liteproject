@@ -1,0 +1,29 @@
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   background-color: #023156;
+  &__navigation{
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+  }
+  &__link{
+    text-decoration: none;
+  }
+  &__button {
+    padding: 8px 14px;
+    border-radius: 16px;
+    border: 1px solid #03abd2;
+    background-color: ghostwhite;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #e8e4dd;
+    }
+
+    &:focus{
+      background-color: #6ed4e5;
+    }
+  }
+}
