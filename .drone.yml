@@ -11,6 +11,8 @@ steps:
   - name: qm
     image: docker.gnivc.ru/qm:1.0.0
     commands:
+      - yarn start &
+      - sleep 30
       - qm run-tests --type unit --ci
       - qm run-tests --type e2e --ci
     depends_on:
