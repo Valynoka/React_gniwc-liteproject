@@ -19,12 +19,4 @@ describe('Компонент InfoPage', () => {
   it('отображается без ошибок', () => {
     expect(renderComponent).not.toThrow();
   });
-  it('выводит сообщение', () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <InfoPage data={[]} />
-      </BrowserRouter>,
-    );
-    expect(getByText('В этом разделе информация в табличном виде и в форме списка')).toBeInTheDocument();
-  });
 });

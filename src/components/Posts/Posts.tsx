@@ -37,18 +37,18 @@ const Posts: React.FC<PostsProps> = (props) => {
   if (view === 'list') {
     return (
       <div className={styles.list}>
-        {filtered.map((post) => (
+        {filtered ? filtered.map((post) => (
           <PostList key={post.episode_id} {...post} />
-        ))}
+        )) : null}
       </div>
     );
   }
   if (view === 'table') {
     return (
       <div className={styles.table}>
-        {filtered.map((post) => (
+        {filtered ? filtered.map((post) => (
           <PostTable key={post.episode_id} {...post} />
-        ))}
+        )) : null }
       </div>
     );
   }
