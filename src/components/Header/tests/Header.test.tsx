@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 
 import Header from '../Header';
 
@@ -19,12 +18,4 @@ describe('Компонент Header', () => {
   it('отображается без ошибок', () => {
     expect(renderComponent).not.toThrow();
   });
-  // it('выводит сообщение', () => {
-  //   const { getByText } = render(
-  //     <BrowserRouter>
-  //       <Header />
-  //     </BrowserRouter>,
-  //   );
-  //   expect(getByText('Главная')).toBeInTheDocument();
-  // });
 });
