@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './StartPage.module.scss';
-import { GiftSvg } from '../ui/Svg/StartPageSvg';
+import GiftSvg from '../ui/Svg/StartPageSvg';
 
 const StartPage: React.FC = () => (
   <div className={classes.startPage}>
