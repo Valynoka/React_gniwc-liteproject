@@ -68,5 +68,8 @@
       "ff-lint --fix",
       "git add"
     ]
+  },
+  "devDependencies": {
+    "puppeteer": "^13.4.1"
   }
 }
