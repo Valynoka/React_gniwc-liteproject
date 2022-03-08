@@ -51,7 +51,6 @@ describe('Тесты puppeteer должны', () => {
     await page.screenshot({ path: './src/Puppeteer/screenshotSVGStartPage.png' }, 5000);
   });
   it('дождаться загрузки SVG картинки на стартовой странице, нажать на SVG, нажать на кнопку "Показать еще" сделать скрин', async () => {
-    await page.waitForSelector('#root > header > nav > a:nth-child(1) > button');
     await page.click('#root > header > nav > a:nth-child(1) > button');
     await page.waitForSelector('#Capa_1');
     await page.click('#Capa_1');
