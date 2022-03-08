@@ -6,9 +6,19 @@ import classes from './Posts.module.scss';
 import Search from '../Search';
 import { SerialApiDataTypes } from '../../models/SerialApiDataTypes';
 import postsStore from '../../stores/postsStore';
+import Error from '../Error';
+import Loading from '../Loading';
 
 const Posts: React.FC<SerialApiDataTypes> = observer(() => {
-  const { searchValue } = postsStore;
+  const { searchValue, status } = postsStore;
+
+  if (status === 'loading') {
+    return <Loading />;
+  }
+
+  if (status === 'error') {
+    return <Error />;
+  }
 
   return (
     <div className={classes.posts__wrapper}>

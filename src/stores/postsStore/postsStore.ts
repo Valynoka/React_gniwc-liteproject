@@ -11,6 +11,8 @@ class PostsStore {
 
   searchValue = '';
 
+  status: Status = 'deff';
+
   constructor() {
     makeAutoObservable(this, {
       setFilteredPostsBySearch: action.bound,
@@ -18,10 +20,13 @@ class PostsStore {
       setShowMore: action.bound,
       setShowLess: action.bound,
     });
+    this.status = 'loading';
     service
       .getSomeData()
       .then((response) => { this.posts = response; })
-      .then(() => { this.filteredPosts = this.posts.slice(0, 3); });
+      .then(() => { this.filteredPosts = this.posts.slice(0, 3); })
+      .then(() => { this.status = 'loaded'; })
+      .then(() => { this.status = 'error'; });
   }
 
   // Search
