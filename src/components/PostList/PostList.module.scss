@@ -1,13 +1,12 @@
 .postList {
-  border: 2px solid #023156;
-  max-width: 400px;
-  border-radius: 24px;
-  display: flex;
-  justify-content: flex-start;
-  padding: 0 20px;
-  margin-bottom: 14px;
-
   &__item {
+    border: 2px solid #023156;
+    max-width: 400px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 20px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
   }
@@ -16,4 +15,20 @@
   }
 }
 
+.postTable__button_wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button{
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  background-color: #023156;
+  color: #E4E5E7;
+  border-radius: 16px;
+  margin: 16px;
+  cursor: pointer;
+
+}
 

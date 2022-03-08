@@ -1,61 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { observer } from 'mobx-react-lite';
+import { Link, Outlet } from 'react-router-dom';
 
-import styles from './Posts.module.scss';
+import classes from './Posts.module.scss';
+import Search from '../Search';
 import { SerialApiDataTypes } from '../../models/SerialApiDataTypes';
-import PostList from '../PostList';
-import PostTable from '../PostTable';
+import postsStore from '../../stores/postsStore';
 
-export type PostsProps = {
-  data: Array<SerialApiDataTypes>,
-  search?: string,
-};
+const Posts: React.FC<SerialApiDataTypes> = observer(() => {
+  const { searchValue } = postsStore;
 
-const Posts: React.FC<PostsProps> = (props) => {
-  const { search = '', data } = props;
-
-  // Хук для фильтрации. Добавляем array, чтобы значения хука получали только то, что
-  // им передается из массива (мы явно задаем, что только определенный тип данных он будет получать)
-  const [filtered, setFiltered] = useState<Array<SerialApiDataTypes>>(data);
-
-  // Хук для того, чтобы менять формат вывода данных (таблица или список)
-  const { view = 'list' } = useParams();
-
-  // Чтобы у нас не было перезагрузки во время фильтрации, мы обернем наш массив в useEffect
-  useEffect(() => {
-    // Задаем как будет вестись поиск
-    if (search.length > 2) {
-      // ищем в массиве слово, которое в нем должно содержаться, предварительно формат. к ниж. регистру
-      const filteredData = data.filter((post) => post.title.toLowerCase().includes(search.toLowerCase()));
-      setFiltered(filteredData);
-    } else {
-      // Выводит данные
-      setFiltered(data);
-    }
-  }, [data, search]);
-
-  if (view === 'list') {
-    return (
-      <div className={styles.list}>
-        {filtered ? filtered.map((post) => (
-          <PostList key={post.episode_id} {...post} />
-        )) : null}
+  return (
+    <div className={classes.posts__wrapper}>
+      <h2 className={classes.posts__title}>Тут могла быть Ваша реклама)))</h2>
+      <Search search={searchValue} />
+      <div className={classes.posts__links_block}>
+        <Link to="PostList">
+          <button className={classes.button} type="button">Список</button>
+        </Link>
+        <Link to="PostTable">
+          <button className={classes.button} type="button">Таблица</button>
+        </Link>
       </div>
-    );
-  }
-  if (view === 'table') {
-    return (
-      <div className={styles.table}>
-        {filtered ? filtered.map((post) => (
-          <PostTable key={post.episode_id} {...post} />
-        )) : null }
-      </div>
-    );
-  }
-  if (data) {
-    return <p>Ничего не найдено</p>;
-  }
-  return null;
-};
-
+      <Outlet />
+    </div>
+  );
+});
 export default Posts;

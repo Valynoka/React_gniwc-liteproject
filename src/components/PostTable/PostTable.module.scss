@@ -6,4 +6,23 @@
   min-width: 50px;
   border: 2px solid black;
 }
+.postTable__button_wrapper{
+  display: flex;
+  justify-content: space-between;
+}
 
+.postTable__button_wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button{
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  background-color: #023156;
+  color: #E4E5E7;
+  border-radius: 16px;
+  margin: 16px;
+  cursor: pointer;
+}
