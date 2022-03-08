@@ -11,7 +11,9 @@ class PostsStore {
 
   searchValue = '';
 
-  status: Status = 'deff';
+  loading: boolean;
+
+  error: boolean;
 
   constructor() {
     makeAutoObservable(this, {
@@ -20,13 +22,20 @@ class PostsStore {
       setShowMore: action.bound,
       setShowLess: action.bound,
     });
-    this.status = 'loading';
+    this.loading = true;
+    this.error = false;
     service
       .getSomeData()
-      .then((response) => { this.posts = response; })
-      .then(() => { this.filteredPosts = this.posts.slice(0, 3); })
-      .then(() => { this.status = 'loaded'; })
-      .then(() => { this.status = 'error'; });
+      .then((response) => {
+        this.posts = response;
+        this.loading = false;
+      })
+      .then(() => {
+        this.filteredPosts = this.posts.slice(0, 3);
+      })
+      .catch(() => {
+        this.error = true;
+      });
   }
 
   // Search

@@ -36,56 +36,7 @@ describe('Тесты puppeteer должны', () => {
     await delay(2000);
     await page.screenshot({ path: './src/Puppeteer/screenshotTable.png' });
   });
-  it('дождаться загрузку кнопки "Таблица", кликнуть на нее, кликнуть на "Показать еще" и сделать скрин', async () => {
-    await page.waitForSelector('#root > header > nav > a:nth-child(2) > button');
-    await page.click('#root > header > nav > a:nth-child(2) > button');
-    await page.waitForSelector('#root > div > div:nth-child(3) > a:nth-child(2) > button');
-    await page.click('#root > div > div:nth-child(3) > a:nth-child(2) > button');
-    function delay1(time: number) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, time);
-      });
-    }
-    await delay1(1000);
-    await page.waitForSelector('#root > div > div:nth-child(4) > div > button:nth-child(1)');
-    await page.click('#root > div > div:nth-child(4) > div > button:nth-child(1)');
-    function delay2(time: number) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, time);
-      });
-    }
-    await delay2(1000);
-    await page.screenshot({ path: './src/Puppeteer/screenshotTableFirsPress.png' }, 5000);
-  });
-  it('дождаться загрузку кнопки "Таблица", кликнуть на нее, кликнуть на "Удалить" и сделать скрин', async () => {
-    await page.waitForSelector('#root > header > nav > a:nth-child(2) > button');
-    await page.click('#root > header > nav > a:nth-child(2) > button');
-    await page.waitForSelector('#root > div > div:nth-child(3) > a:nth-child(2) > button');
-    await page.click('#root > div > div:nth-child(3) > a:nth-child(2) > button');
-    function delay1(time: number) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, time);
-      });
-    }
-    await delay1(1000);
-    await page.waitForSelector('#root > div > div:nth-child(4) > div > button:nth-child(1)');
-    await page.click('#root > div > div:nth-child(4) > div > button:nth-child(1)');
-    function delay2(time: number) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, time);
-      });
-    }
-    await delay2(1000);
-    await page.waitForSelector('#root > div > div:nth-child(4) > div > button:nth-child(2)');
-    await page.click('#root > div > div:nth-child(4) > div > button:nth-child(2)');
-    function delay3(time: number) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, time);
-      });
-    }
-    await delay3(1000);
-    await page.screenshot({ path: './src/Puppeteer/screenshotTableDell.png' }, 5000);
-  });
+
   it('дождаться загрузку SVG картинки на стартовой странице, кликнуть на нее и сделать скрин', async () => {
     await page.waitForSelector('#root > header > nav > a:nth-child(1) > button');
     await page.click('#root > header > nav > a:nth-child(1) > button');

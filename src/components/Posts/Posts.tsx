@@ -10,13 +10,13 @@ import Error from '../Error';
 import Loading from '../Loading';
 
 const Posts: React.FC<SerialApiDataTypes> = observer(() => {
-  const { searchValue, status } = postsStore;
+  const { searchValue, error, loading } = postsStore;
 
-  if (status === 'loading') {
+  if (loading) {
     return <Loading />;
   }
 
-  if (status === 'error') {
+  if (error) {
     return <Error />;
   }
 
