@@ -18,9 +18,4 @@ describe('Компонент PostTable', () => {
   it('отображается без ошибок', () => {
     expect(renderComponent).not.toThrow();
   });
-  it('выводит сообщение', () => {
-    const { getByText } = render(<PostTable episode_id={0} title="Pilot" season="" air_date="" characters={[]} episode="1" series="" />);
-    expect(getByText('Pilot')).toBeInTheDocument();
-    expect(getByText('1')).toBeInTheDocument();
-  });
 });

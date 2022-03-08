@@ -14,8 +14,9 @@ beforeAll(async () => {
 
 describe('Тесты puppeteer должны', () => {
   it('дождаться загрузку кнопки "Главная" и сделать скриншот', async () => {
+    jest.setTimeout(5000);
     await page.waitForSelector('#root > header > nav > a:nth-child(1) > button');
-    await page.screenshot({ path: './src/Puppeteer/StartPage.png' });
+    await page.screenshot({ path: './src/Puppeteer/StartPage.png' }, 5000);
   });
   it('дождаться загрузку кнопки "О сериале", кликнуть на нее и сделать скрин', async () => {
     jest.setTimeout(5000);
@@ -24,6 +25,7 @@ describe('Тесты puppeteer должны', () => {
     await page.screenshot({ path: './src/Puppeteer/screenshotAboutSerial.png' }, 5000);
   });
   it('дождаться загрузку кнопки "Таблица", кликнуть на нее и сделать скрин', async () => {
+    jest.setTimeout(5000);
     await page.waitForSelector('#root > header > nav > a:nth-child(2) > button');
     await page.click('#root > header > nav > a:nth-child(2) > button');
     await page.waitForSelector('#root > div > div:nth-child(3) > a:nth-child(2) > button');
@@ -34,10 +36,11 @@ describe('Тесты puppeteer должны', () => {
       });
     }
     await delay(2000);
-    await page.screenshot({ path: './src/Puppeteer/screenshotTable.png' });
+    await page.screenshot({ path: './src/Puppeteer/screenshotTable.png' }, 5000);
   });
 
   it('дождаться загрузку SVG картинки на стартовой странице, кликнуть на нее и сделать скрин', async () => {
+    jest.setTimeout(5000);
     await page.waitForSelector('#root > header > nav > a:nth-child(1) > button');
     await page.click('#root > header > nav > a:nth-child(1) > button');
     await page.waitForSelector('#Capa_1');
@@ -51,6 +54,7 @@ describe('Тесты puppeteer должны', () => {
     await page.screenshot({ path: './src/Puppeteer/screenshotSVGStartPage.png' }, 5000);
   });
   it('дождаться загрузки SVG картинки на стартовой странице, нажать на SVG, нажать на кнопку "Показать еще" сделать скрин', async () => {
+    jest.setTimeout(5000);
     await page.click('#root > header > nav > a:nth-child(1) > button');
     await page.waitForSelector('#Capa_1');
     await page.click('#Capa_1');
@@ -69,7 +73,7 @@ describe('Тесты puppeteer должны', () => {
       });
     }
     await delay(3000);
-    await page.screenshot({ path: './src/Puppeteer/screenshotDogs2.png' });
+    await page.screenshot({ path: './src/Puppeteer/screenshotDogs2.png' }, 5000);
   });
   afterAll(async () => {
     await browser.close();
