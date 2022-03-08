@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 import Search from '../Search';
 
@@ -20,14 +19,7 @@ describe('Компонент Search', () => {
     expect(renderComponent).not.toThrow();
   });
   it('имеет корректный placeholder', () => {
-    const onChange = jest.fn();
-    render(<Search search="" handleSearch={onChange} />);
+    render(<Search search="" />);
     expect(screen.getByPlaceholderText(/Search/)).toBeInTheDocument();
-  });
-  it('будет вызываться столько раз, сколько пользователь раз нажмет клавиши', async () => {
-    const onChange = jest.fn();
-    render(<Search search="" handleSearch={onChange} />);
-    await userEvent.type(screen.getByRole('textbox'), 'Mom');
-    expect(onChange).toHaveBeenCalledTimes(3);
   });
 });
